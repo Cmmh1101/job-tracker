@@ -1,8 +1,24 @@
+import Landing from "./views/Landing";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import NotFound from "./views/NotFound";
+
 function App() {
   return (
-    <div className="App">
-      <h1>Job tracker</h1>
-    </div>
+    <BrowserRouter>
+      <nav>
+        <Link to="/">Dashboard</Link>
+        <Link to="/register">Register</Link>
+        <Link to="/landing">Landing</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<div>Dashboard</div>} />
+        <Route path="/register" element={<div>Register</div>} />
+        <Route path="/landing" element={<Landing />} />
+        <Route path="/" element={<div>Dashboard</div>} />
+        {/* not found */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
