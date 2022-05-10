@@ -1,20 +1,14 @@
-import Landing from "./views/Landing";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import NotFound from "./views/NotFound";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Dashboard, Register, NotFound, Landing } from "./views";
 
 function App() {
   return (
     <BrowserRouter>
-      <nav>
-        <Link to="/">Dashboard</Link>
-        <Link to="/register">Register</Link>
-        <Link to="/landing">Landing</Link>
-      </nav>
       <Routes>
         <Route path="/" element={<div>Dashboard</div>} />
-        <Route path="/register" element={<div>Register</div>} />
+        <Route path="/register" element={<Register />} />
         <Route path="/landing" element={<Landing />} />
-        <Route path="/" element={<div>Dashboard</div>} />
+        <Route path="/" element={<Dashboard />} />
         {/* not found */}
         <Route path="*" element={<NotFound />} />
       </Routes>

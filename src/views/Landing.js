@@ -21,7 +21,7 @@ const Landing = () => {
             aliquip ex ea commodo consequat.
           </p>
           <Link to="/register" className="btn btn-hero">
-            Login/Register
+            Login / Register
           </Link>
         </div>
         <img src={main} alt="job hunt" className="img main-img" />
