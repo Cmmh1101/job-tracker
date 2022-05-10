@@ -14,19 +14,24 @@ const Register = () => {
   const [values, setValues] = useState(initialState);
   // global state & useNavigate
 
-  const { isLoading, showAlert } = useAppContext();
+  const { isLoading, showAlert, displayAlert } = useAppContext();
 
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
   };
 
   const handleChange = (e) => {
-    console.log(e.target);
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const { name, email, password, isMember } = values;
+    if (!email || !password || (!isMember && !name)) {
+      displayAlert();
+      return;
+    }
+    console.log(values);
   };
 
   return (
@@ -35,7 +40,7 @@ const Register = () => {
         <Logo />
         <h3>{values.isMember ? "Login" : "Register"}</h3>
         {showAlert && (
-          <Alert type="alert-danger" alertMessage="alert goes here" />
+          <Alert alerType="alert-danger" alertText="alert goes here" />
         )}
 
         {/* name input */}
